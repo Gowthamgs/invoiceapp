@@ -1,35 +1,43 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+ <div class="col-md-8 col-md-offset-2">
+  <div class="panel panel-default">
+   <div class="panel-heading">
+    <h3 class="panel-title">Invoices</h3>
+    </div>
+        <div class="panel-body">   
+          <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                  <th>Comapany</th>
+                  <th>Contragent</th>
+                  <th>Currency</th>
+                  <th>Data</th>
+                  <th colspan="3"></th>
+                </tr>
+            </thead>
 
-<h1>Invoices</h1>
+          <tbody>
+            <% @invoices.each do |invoice| %>
+              <tr>
+                
+                <td><%= invoice.comapany %></td>
+                <td><%= invoice.contragent %><%= invoice.amount %></td>
+                <td><%= invoice.currency %></td>
+                <td><%= invoice.data %></td>
+                <td><%= link_to 'Show', invoice %></td>
+                <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+                <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+      </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Amount</th>
-      <th>Comapany</th>
-      <th>Contragent</th>
-      <th>Currency</th>
-      <th>Data</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="panel-footer">
 
-  <tbody>
-    <% @invoices.each do |invoice| %>
-      <tr>
-        <td><%= invoice.amount %></td>
-        <td><%= invoice.comapany %></td>
-        <td><%= invoice.contragent %></td>
-        <td><%= invoice.currency %></td>
-        <td><%= invoice.data %></td>
-        <td><%= link_to 'Show', invoice %></td>
-        <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-        <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Invoice', new_invoice_path %>
+        <%= link_to "New Invoices", new_invoice_path, class: "btn btn-primary" %>
+    </div>
+</div>
+</div>
+</div>
